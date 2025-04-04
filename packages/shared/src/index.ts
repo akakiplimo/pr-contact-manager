@@ -72,6 +72,11 @@ export const API_ROUTES = {
     REGISTER: '/auth/register',
     PROFILE: '/auth/profile',
   },
+  USER: {
+    BASE: '/users',
+    FIND_ONE: '/users/:email',
+    CREATE: '/users',
+  },
   CONTACTS: {
     BASE: '/contacts',
     EXPORT: '/contacts/export',

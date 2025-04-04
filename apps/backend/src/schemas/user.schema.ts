@@ -21,6 +21,16 @@ export class User {
     default: [Role.USER],
   })
   roles: Role[];
+
+  id?: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.virtual('id').get(function () {
+  return this._id.toHexString();
+});
+
+UserSchema.set('toJSON', {
+  virtuals: true,
+});
