@@ -1,5 +1,5 @@
 // Change this to your actual API URL when deploying
-export const API_BASE_URL = 'http://localhost:3000/api';
+export const API_BASE_URL = 'http://localhost:3333/api';
 
 // For production, you might use environment variables:
 // export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://your-api-domain.com';
