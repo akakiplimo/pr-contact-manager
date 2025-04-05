@@ -41,6 +41,9 @@ importers:
       '@nestjs/platform-express':
         specifier: ^11.0.1
         version: 11.0.1(@nestjs/common@11.0.1)(@nestjs/core@11.0.1)
+      '@nestjs/swagger':
+        specifier: ^11.1.0
+        version: 11.1.0(@nestjs/common@11.0.1)(@nestjs/core@11.0.1)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)
       '@types/passport-jwt':
         specifier: ^4.0.1
         version: 4.0.1
@@ -65,6 +68,9 @@ importers:
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
+      swagger-ui-express:
+        specifier: ^5.0.1
+        version: 5.0.1(express@5.0.1)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.2.0
@@ -184,18 +190,12 @@ importers:
       '@expo/vector-icons':
         specifier: ^14.0.2
         version: 14.0.2
-      '@react-native-async-storage/async-storage':
-        specifier: ^2.1.2
-        version: 2.1.2(react-native@0.76.8)
       '@react-navigation/bottom-tabs':
         specifier: ^7.2.0
         version: 7.2.0(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
       '@react-navigation/native':
         specifier: ^7.0.14
         version: 7.0.14(react-native@0.76.8)(react@18.3.1)
-      '@react-navigation/native-stack':
-        specifier: ^7.3.4
-        version: 7.3.4(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
       axios:
         specifier: ^1.8.4
         version: 1.8.4
@@ -218,8 +218,11 @@ importers:
         specifier: ~7.0.5
         version: 7.0.5(expo@52.0.42)(react-native@0.76.8)(react@18.3.1)
       expo-router:
-        specifier: ~4.0.19
-        version: 4.0.19(expo-constants@17.0.8)(expo-linking@7.0.5)(expo@52.0.42)(react-dom@18.3.1)(react-native-reanimated@3.16.1)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
+        specifier: ~4.0.20
+        version: 4.0.20(expo-constants@17.0.8)(expo-linking@7.0.5)(expo@52.0.42)(react-dom@18.3.1)(react-native-reanimated@3.16.1)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
+      expo-secure-store:
+        specifier: ^14.0.1
+        version: 14.0.1(expo@52.0.42)
       expo-splash-screen:
         specifier: ~0.29.22
         version: 0.29.22(expo@52.0.42)
@@ -3036,6 +3039,10 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
+  /@microsoft/tsdoc@0.15.1:
+    resolution: {integrity: sha512-4aErSrCR/On/e5G2hDP0wjooqDdauzEbIq8hIkIe5pXV0rtWJZvdCEKL0ykZxex+IxIwBp0eGeV48hQN07dXtw==}
+    dev: false
+
   /@mongodb-js/saslprep@1.2.1:
     resolution: {integrity: sha512-1NCa8GsZ+OFLTw5KkKQS22wLS+Rs+y02sgkhr99Pm4OSXtSDHCJyq0uscPF0qA86ipGYH4PwtC2+a8Y4RKkCcg==}
     dependencies:
@@ -3325,6 +3332,25 @@ packages:
       jsonwebtoken: 9.0.2
     dev: false
 
+  /@nestjs/mapped-types@2.1.0(@nestjs/common@11.0.1)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2):
+    resolution: {integrity: sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw==}
+    peerDependencies:
+      '@nestjs/common': ^10.0.0 || ^11.0.0
+      class-transformer: ^0.4.0 || ^0.5.0
+      class-validator: ^0.13.0 || ^0.14.0
+      reflect-metadata: ^0.1.12 || ^0.2.0
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      '@nestjs/common': 11.0.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      class-transformer: 0.5.1
+      class-validator: 0.14.1
+      reflect-metadata: 0.2.2
+    dev: false
+
   /@nestjs/mongoose@11.0.3(@nestjs/common@11.0.1)(@nestjs/core@11.0.1)(mongoose@8.13.1)(rxjs@7.8.1):
     resolution: {integrity: sha512-tg7bbKD4MnNMPaiDLXK/JUyTNQxIn3rNnI+oYU1HorLpNiR2E8vPraWVvfptpIj+zferpT6LkrHMvtqvuIKNPw==}
     peerDependencies:
@@ -3379,6 +3405,36 @@ packages:
     transitivePeerDependencies:
       - chokidar
     dev: true
+
+  /@nestjs/swagger@11.1.0(@nestjs/common@11.0.1)(@nestjs/core@11.0.1)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2):
+    resolution: {integrity: sha512-+GQ+q1ASTBvGi0DYHukWi8NVVVLszedwLLqHdLRnJh8rjokt8YTDb7roImvT/YMmYgPvaWBv/4JYdZH4FueLPQ==}
+    peerDependencies:
+      '@fastify/static': ^8.0.0
+      '@nestjs/common': ^11.0.1
+      '@nestjs/core': ^11.0.1
+      class-transformer: '*'
+      class-validator: '*'
+      reflect-metadata: ^0.1.12 || ^0.2.0
+    peerDependenciesMeta:
+      '@fastify/static':
+        optional: true
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      '@microsoft/tsdoc': 0.15.1
+      '@nestjs/common': 11.0.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      '@nestjs/core': 11.0.1(@nestjs/common@11.0.1)(@nestjs/platform-express@11.0.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+      '@nestjs/mapped-types': 2.1.0(@nestjs/common@11.0.1)(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)
+      class-transformer: 0.5.1
+      class-validator: 0.14.1
+      js-yaml: 4.1.0
+      lodash: 4.17.21
+      path-to-regexp: 8.2.0
+      reflect-metadata: 0.2.2
+      swagger-ui-dist: 5.20.1
+    dev: false
 
   /@nestjs/testing@11.0.1(@nestjs/common@11.0.1)(@nestjs/core@11.0.1)(@nestjs/platform-express@11.0.1):
     resolution: {integrity: sha512-s1hQAC46W/qp2JJqCeqhG/uT8IBtvgIoAHklUPl7sTYSJCs745q6X2+rrOPtAewVW8CuYNhQS7/0g94QR1IHXw==}
@@ -3540,15 +3596,6 @@ packages:
       '@babel/runtime': 7.27.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.3.1)
       react: 18.3.1
-    dev: false
-
-  /@react-native-async-storage/async-storage@2.1.2(react-native@0.76.8):
-    resolution: {integrity: sha512-dvlNq4AlGWC+ehtH12p65+17V0Dx7IecOWl6WanF2ja38O1Dcjjvn7jVzkUHJ5oWkQBlyASurTPlTHgKXyYiow==}
-    peerDependencies:
-      react-native: ^0.0.0-0 || >=0.65 <1.0
-    dependencies:
-      merge-options: 3.0.4
-      react-native: 0.76.8(@babel/core@7.26.10)(@babel/preset-env@7.26.9)(@types/react@18.3.12)(react@18.3.1)
     dev: false
 
   /@react-native/assets-registry@0.76.8:
@@ -3745,7 +3792,7 @@ packages:
       react-native-safe-area-context: '>= 4.0.0'
       react-native-screens: '>= 4.0.0'
     dependencies:
-      '@react-navigation/elements': 2.3.2(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native@0.76.8)(react@18.3.1)
+      '@react-navigation/elements': 2.3.3(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native@0.76.8)(react@18.3.1)
       '@react-navigation/native': 7.0.14(react-native@0.76.8)(react@18.3.1)
       color: 4.2.3
       react: 18.3.1
@@ -3771,11 +3818,11 @@ packages:
       use-sync-external-store: 1.5.0(react@18.3.1)
     dev: false
 
-  /@react-navigation/elements@2.3.2(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native@0.76.8)(react@18.3.1):
-    resolution: {integrity: sha512-8MWcL/TVCg3MTOaAXMSPM8OrvZFQ16EPj/a+wVRDKiyl/GFnchu3ho3tsP+4odAMbWXNRsHMdHNxgFVCmPhNNA==}
+  /@react-navigation/elements@2.3.3(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native@0.76.8)(react@18.3.1):
+    resolution: {integrity: sha512-6OGnhSPsBs0ziOy3ADLUACQI4rpe1T/1xAot+e29ugUJrc/BLATJ9okiPb+j4OZzSLlIYxxkV/D++su0XgSEPA==}
     peerDependencies:
       '@react-native-masked-view/masked-view': '>= 0.2.0'
-      '@react-navigation/native': ^7.1.0
+      '@react-navigation/native': ^7.1.1
       react: '>= 18.2.0'
       react-native: '*'
       react-native-safe-area-context: '>= 4.0.0'
@@ -3790,16 +3837,16 @@ packages:
       react-native-safe-area-context: 4.12.0(react-native@0.76.8)(react@18.3.1)
     dev: false
 
-  /@react-navigation/native-stack@7.3.4(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1):
-    resolution: {integrity: sha512-quu6nfQf8zHqOQMvIyAJf+Wxx1ItoynakI4ZwHpbC77kiIUkzpHCAScnJ+ZE8bjkUpuWm5ugXo8AUNo4DWHJBQ==}
+  /@react-navigation/native-stack@7.3.5(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1):
+    resolution: {integrity: sha512-yelx7PrC5JfTnOK6VG8QYqUhgDw/8qGluHYmDoZHYTvAQ4/igh5iV601e8DqDyh2hIxmFc3uSS7yvic49TQmQg==}
     peerDependencies:
-      '@react-navigation/native': ^7.1.0
+      '@react-navigation/native': ^7.1.1
       react: '>= 18.2.0'
       react-native: '*'
       react-native-safe-area-context: '>= 4.0.0'
       react-native-screens: '>= 4.0.0'
     dependencies:
-      '@react-navigation/elements': 2.3.2(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native@0.76.8)(react@18.3.1)
+      '@react-navigation/elements': 2.3.3(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native@0.76.8)(react@18.3.1)
       '@react-navigation/native': 7.0.14(react-native@0.76.8)(react@18.3.1)
       react: 18.3.1
       react-native: 0.76.8(@babel/core@7.26.10)(@babel/preset-env@7.26.9)(@types/react@18.3.12)(react@18.3.1)
@@ -3829,6 +3876,11 @@ packages:
     resolution: {integrity: sha512-FZsMPbFP8FubdlA0oa+2bLhgwDNSk+ezIUETxIvMazoz715LTpXzPNBiQ29AMfZztADAWniTjotWSOREwKETkA==}
     dependencies:
       nanoid: 3.3.8
+    dev: false
+
+  /@scarf/scarf@1.4.0:
+    resolution: {integrity: sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==}
+    requiresBuild: true
     dev: false
 
   /@sec-ant/readable-stream@0.4.1:
@@ -7053,8 +7105,8 @@ packages:
     dependencies:
       invariant: 2.2.4
 
-  /expo-router@4.0.19(expo-constants@17.0.8)(expo-linking@7.0.5)(expo@52.0.42)(react-dom@18.3.1)(react-native-reanimated@3.16.1)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1):
-    resolution: {integrity: sha512-oZ/vAx0x126Q6rccpWkMhKa/17YHYfeXQP8KwqaIadQsTR28cLgAY2gcAtFQyc8XTjgJmsRnfQNyCnyNN04DWg==}
+  /expo-router@4.0.20(expo-constants@17.0.8)(expo-linking@7.0.5)(expo@52.0.42)(react-dom@18.3.1)(react-native-reanimated@3.16.1)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1):
+    resolution: {integrity: sha512-1+CtvohptOsG/Piejk8uQ9cmM+8ojadFkdeThCn4klZjc0dtFSSHenb8D/0RKuBdp4taBkNaqgEKwYvhVBJyEg==}
     peerDependencies:
       '@react-navigation/drawer': ^7.1.1
       '@testing-library/jest-native': '*'
@@ -7077,7 +7129,7 @@ packages:
       '@radix-ui/react-slot': 1.0.1(react@18.3.1)
       '@react-navigation/bottom-tabs': 7.2.0(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
       '@react-navigation/native': 7.0.14(react-native@0.76.8)(react@18.3.1)
-      '@react-navigation/native-stack': 7.3.4(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
+      '@react-navigation/native-stack': 7.3.5(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.12.0)(react-native-screens@4.4.0)(react-native@0.76.8)(react@18.3.1)
       client-only: 0.0.1
       expo: 52.0.42(@babel/core@7.26.10)(@babel/preset-env@7.26.9)(react-native-webview@13.12.5)(react-native@0.76.8)(react@18.3.1)
       expo-constants: 17.0.8(expo@52.0.42)(react-native@0.76.8)
@@ -7097,6 +7149,14 @@ packages:
       - react-dom
       - react-native
       - supports-color
+    dev: false
+
+  /expo-secure-store@14.0.1(expo@52.0.42):
+    resolution: {integrity: sha512-QUS+j4+UG4jRQalgnpmTvvrFnMVLqPiUZRzYPnG3+JrZ5kwVW2w6YS3WWerPoR7C6g3y/a2htRxRSylsDs+TaQ==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 52.0.42(@babel/core@7.26.10)(@babel/preset-env@7.26.9)(react-native-webview@13.12.5)(react-native@0.76.8)(react@18.3.1)
     dev: false
 
   /expo-splash-screen@0.29.22(expo@52.0.42):
@@ -8394,11 +8454,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /is-plain-obj@2.1.0:
-    resolution: {integrity: sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==}
-    engines: {node: '>=8'}
-    dev: false
-
   /is-plain-object@2.0.4:
     resolution: {integrity: sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==}
     engines: {node: '>=0.10.0'}
@@ -9679,13 +9734,6 @@ packages:
   /merge-descriptors@2.0.0:
     resolution: {integrity: sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==}
     engines: {node: '>=18'}
-
-  /merge-options@3.0.4:
-    resolution: {integrity: sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      is-plain-obj: 2.1.0
-    dev: false
 
   /merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -12459,6 +12507,28 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /swagger-ui-dist@5.20.1:
+    resolution: {integrity: sha512-qBPCis2w8nP4US7SvUxdJD3OwKcqiWeZmjN2VWhq2v+ESZEXOP/7n4DeiOiiZcGYTKMHAHUUrroHaTsjUWTEGw==}
+    dependencies:
+      '@scarf/scarf': 1.4.0
+    dev: false
+
+  /swagger-ui-dist@5.20.3:
+    resolution: {integrity: sha512-BVMj5gR1y3SN7kMRsgLnyN2zi21ITfIoJjKZOeCrcz6BRx5wNeHMr3efyRY1dGmPxPuaCDNj2PcwTzQaDfrbCQ==}
+    dependencies:
+      '@scarf/scarf': 1.4.0
+    dev: false
+
+  /swagger-ui-express@5.0.1(express@5.0.1):
+    resolution: {integrity: sha512-SrNU3RiBGTLLmFU8GIJdOdanJTl4TOmT27tt3bWWHppqYmAZ6IDuEuBvMU6nZq0zLEe6b/1rACXCgLZqO6ZfrA==}
+    engines: {node: '>= v0.10.32'}
+    peerDependencies:
+      express: '>=4.0.0 || >=5.0.0-beta'
+    dependencies:
+      express: 5.0.1
+      swagger-ui-dist: 5.20.3
+    dev: false
 
   /swap-case@1.1.2:
     resolution: {integrity: sha512-BAmWG6/bx8syfc6qXPprof3Mn5vQgf5dwdUNJhsNqU9WdPt5P+ES/wQ5bxfijy8zwZgZZHslC3iAsxsuQMCzJQ==}

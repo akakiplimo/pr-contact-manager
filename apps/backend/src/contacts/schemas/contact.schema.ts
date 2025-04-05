@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
+import * as mongoosePaginate from 'mongoose-paginate-v2';
 
 export type ContactDocument = Contact & Document;
 
@@ -39,4 +40,13 @@ export class Contact {
 }
 
 export const ContactSchema = SchemaFactory.createForClass(Contact);
-ContactSchema.index({ name: 'text', tags: 'text', organization: 'text' });
+// Apply pagination plugin at schema
+ContactSchema.plugin(mongoosePaginate);
+// Add text index for search
+ContactSchema.index({
+  name: 'text',
+  tags: 'text',
+  organization: 'text',
+  notes: 'text',
+  'contactPerson.name': 'text',
+});
