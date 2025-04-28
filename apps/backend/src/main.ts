@@ -1,10 +1,13 @@
-import { NestFactory } from '@nestjs/core';
-import { Logger } from '@nestjs/common';
+ import { NestFactory } from '@nestjs/core';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Validations piped
+  app.useGlobalPipes(new ValidationPipe());
 
   // Configure global prefix
   app.setGlobalPrefix('api');
