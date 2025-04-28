@@ -1,5 +1,5 @@
 // Change this to your actual API URL when deploying
-export const API_BASE_URL = 'http://localhost:3333/api';
+export const API_BASE_URL = 'https://b394-197-232-0-80.ngrok-free.app/api';
 
 // For production, you might use environment variables:
 // export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://your-api-domain.com';

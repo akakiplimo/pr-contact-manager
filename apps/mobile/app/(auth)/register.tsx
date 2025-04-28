@@ -41,6 +41,7 @@ export default function RegisterScreen() {
 
     try {
       setLoading(true);
+      console.log('Registering user:', { name, email, password });
       await register(name, email, password);
     } catch (error) {
       console.error('Registration error:', error);

@@ -14,13 +14,15 @@
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
         }
-      }
+      },
+      "bundleIdentifier": "com.anonymous.prcontacts"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.prcontacts"
     },
     "web": {
       "bundler": "metro",
