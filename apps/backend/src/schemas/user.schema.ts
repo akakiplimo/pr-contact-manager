@@ -28,7 +28,7 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.virtual('id').get(function () {
-  return this._id.toHexString();
+  return (this._id as any).toHexString();
 });
 
 UserSchema.set('toJSON', {
