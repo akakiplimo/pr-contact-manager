@@ -41,7 +41,7 @@ export class Contact {
 
 export const ContactSchema = SchemaFactory.createForClass(Contact);
 // Apply pagination plugin at schema
-ContactSchema.plugin(mongoosePaginate as any);
+ContactSchema.plugin((mongoosePaginate as any).default || mongoosePaginate);
 // Add text index for search
 ContactSchema.index({
   name: 'text',
