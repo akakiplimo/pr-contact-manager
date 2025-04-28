@@ -87,14 +87,14 @@ export default function LoginScreen() {
             )}
           </TouchableOpacity>
 
-          {/* <View style={styles.registerContainer}>
+          <View style={styles.registerContainer}>
             <Text style={styles.registerText}>Don't have an account?</Text>
             <Link href="/(auth)/register" asChild>
               <TouchableOpacity>
                 <Text style={styles.registerLink}>Create Account</Text>
               </TouchableOpacity>
             </Link>
-          </View> */}
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
