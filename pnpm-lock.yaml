@@ -187,9 +187,6 @@ importers:
 
   apps/mobile:
     dependencies:
-      '@babel/runtime':
-        specifier: ^7.27.0
-        version: 7.27.0
       '@expo/vector-icons':
         specifier: ^14.0.2
         version: 14.0.2
